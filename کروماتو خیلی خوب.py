@@ -29,55 +29,6 @@ sample = input("Sample Name: ")
 inj = input("Injection Number: ")
 date_input = input("Date Time (مثال 18.09.2017 01.21): ")
 
-dt = datetime.strptime(date_input, "%d.%m.%Y %H.%M")
-date_word = dt.strftime("%m/%d/%Y %I:%M:%S %p")
-
-formo_pct = float(input("Formoterol %: "))
-bude_pct = float(input("Budesonide %: "))
-
-# ===== CONSTANTS =====
-FORMO_AREA100 = 23.19004
-BUDE_AREA100 = 192.20139
-
-FORMO_HEIGHT100 = 4.85268
-BUDE_HEIGHT100 = 24.56923
-
-FORMO_WIDTH100 = 0.0796
-BUDE_WIDTH100 = 0.1304
-
-FORMO_RT = "1.525"
-BUDE_RT = "3.179"
-
-# ===== CALCULATION =====
-formo_area = FORMO_AREA100 * formo_pct / 100
-bude_area = BUDE_AREA100 * bude_pct / 100
-
-formo_height = FORMO_HEIGHT100 * formo_pct / 100
-bude_height = BUDE_HEIGHT100 * bude_pct / 100
-
-formo_width = FORMO_WIDTH100 * formo_pct / 100
-bude_width = BUDE_WIDTH100 * bude_pct / 100
-
-total_area = formo_area + bude_area
-total_height = formo_height + bude_height
-
-formo_area_pct = formo_area / total_area * 100 if total_area else 0
-bude_area_pct = bude_area / total_area * 100 if total_area else 0
-
-# ===== NEW TEXT VALUES =====
-new_formo_row = f"1   {FORMO_RT} MM    {formo_width:.4f}   {formo_area:.5f}    {formo_height:.5f}  {formo_area_pct:.4f}"
-new_bude_row = f"2   {BUDE_RT} MM    {bude_width:.4f}   {bude_area:.5f}   {bude_height:.5f}  {bude_area_pct:.4f}"
-new_totals = f"Totals :                   {total_area:.5f}   {total_height:.5f}"
-
-old_sample = "Sample Name: FormoterolBudsonide STD 100% 1404.04.01"
-new_sample = f"Sample Name: {sample}"
-
-old_date_prefix = "Injection Date  : "
-new_date = f"Injection Date  : {date_word}"
-
-old_formo_row_prefix = "1   1.525 MM"
-old_bude_row_prefix = "2   3.179 MM"
-old_totals_prefix = "Totals :"
 
 # *** رشته‌ای که می‌خواهیم حذفش کنیم ***
 old_bude_numbers_block = "192.20139   24.56923  89.2335"
