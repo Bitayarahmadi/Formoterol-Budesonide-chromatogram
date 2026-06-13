@@ -11,37 +11,6 @@ import tempfile
 import re
 from datetime import datetime
 
-# تنظیمات اولیه
-desktop = os.path.join(os.path.expanduser("~"), "Desktop")
-template = os.path.join(desktop, "100% inj3.docx")
-
-def unique_name():
-    i = 1
-    while True:
-        path = os.path.join(desktop, f"updated_report_{i}.docx")
-        if not os.path.exists(path): return path
-        i += 1
-
-output = unique_name()
-
-# ===== INPUT =====
-sample = input("Sample Name: ")
-inj = input("Injection Number: ")
-date_input = input("Date Time (مثال 18.12.2025 09.00): ").strip()
-
-dt = datetime.strptime(date_input, "%d.%m.%Y %H.%M")
-date_word = dt.strftime("%m/%d/%Y %I:%M:%S %p")        # فرمت Injection Date
-path_date = dt.strftime("%Y-%m-%d %H-%M-%S")          # فرمت مسیر فایل
-
-# محاسبات
-formo_pct = float(input("Formoterol %: "))
-bude_pct = float(input("Budesonide %: "))
-
-FORMO_AREA100, BUDE_AREA100 = 23.19004, 192.20139
-FORMO_HEIGHT100, BUDE_HEIGHT100 = 4.85268, 24.56923
-FORMO_WIDTH100, BUDE_WIDTH100 = 0.0796, 0.1304
-FORMO_RT, BUDE_RT = "1.525", "3.179"
-
 # تعریف متغیرهایی که باعث خطا شده بودند
 formo_area, bude_area = FORMO_AREA100 * formo_pct / 100, BUDE_AREA100 * bude_pct / 100
 formo_height, bude_height = FORMO_HEIGHT100 * formo_pct / 100, BUDE_HEIGHT100 * bude_pct / 100
