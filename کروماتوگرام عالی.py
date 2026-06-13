@@ -142,9 +142,7 @@ with tempfile.TemporaryDirectory() as tmp:
                     new_text = text
                     for pattern in date_patterns:
                         new_text = pattern.sub(date_word, new_text)
-                    if new_text != text:
-                        elem.text = new_text
-                        modified = True
+                   
 
             if modified:
                 tree.write(file_path, encoding="utf-8", xml_declaration=True)
